@@ -66,4 +66,14 @@ export class UserService implements OnModuleInit {
   async findUserByUsername(username: string): Promise<UserDocument | null> {
     return this.userModel.findOne({ username }).exec();
   }
+
+  async createUser(data: any): Promise<UserDocument> {
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const newUser = new this.userModel({
+      ...data,
+      password: hashedPassword,
+      role: 'user',
+    });
+    return newUser.save();
+  }
 }

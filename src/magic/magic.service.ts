@@ -45,4 +45,12 @@ async filterMagic(filters: {
     const result = await this.magicModel.deleteOne({ _id: id }).exec();
     return { deleted: result.deletedCount > 0 };
   }
+
+async getMagic(id: string): Promise<Magic | null> {
+  return this.magicModel.findById(id).exec();
+}
+  async updateMagic(id: string, magicDto: MagicDto): Promise<Magic | null> {
+    return this.magicModel.findByIdAndUpdate(id, magicDto, { new: true }).exec();
+  }
+
 }
