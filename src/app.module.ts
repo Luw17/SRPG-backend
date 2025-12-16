@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { MagicModule } from './magic/magic.module';
+import { CharactersheetModule } from './charactersheet/charactersheet.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { MagicModule } from './magic/magic.module';
     UserModule,
     AuthModule,
     MagicModule,
+    CharactersheetModule,
   ],
   controllers: [AppController],
   providers: [AppService],
